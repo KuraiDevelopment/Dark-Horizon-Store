@@ -16,10 +16,11 @@
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             color: #ffffff;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -32,6 +33,7 @@
             border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease-out;
         }
         
         .header h1 {
@@ -42,6 +44,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
         .header p {
@@ -57,6 +60,7 @@
             padding: 10px 20px;
             border-radius: 25px;
             border: 1px solid #45b7d1;
+            animation: pulse 2s infinite;
         }
         
         .server-info span {
@@ -64,9 +68,125 @@
             font-weight: 600;
         }
         
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 60px 0 40px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .cars-section {
+            margin-bottom: 80px;
+        }
+        
+        .gallery-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-main {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: end;
+            padding: 30px;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .slide-info {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .slide-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #4ecdc4;
+        }
+        
+        .slide-description {
+            color: #b8b8b8;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-dot.active {
+            background: #4ecdc4;
+            transform: scale(1.2);
+        }
+        
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
@@ -77,9 +197,10 @@
             padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
         }
         
         .product-card::before {
@@ -93,15 +214,16 @@
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
         }
         
         .product-icon {
             font-size: 3rem;
             margin-bottom: 20px;
             display: block;
+            animation: bounce 2s infinite;
         }
         
         .product-title {
@@ -117,24 +239,47 @@
             margin-bottom: 20px;
         }
         
-        .product-features {
-            list-style: none;
+        .product-options {
             margin-bottom: 25px;
         }
         
-        .product-features li {
-            padding: 8px 0;
-            color: #d4d4d4;
-            position: relative;
-            padding-left: 25px;
+        .option-category {
+            margin-bottom: 20px;
         }
         
-        .product-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .option-title {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: #4ecdc4;
-            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .option-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.9rem;
+        }
+        
+        .option-item:hover {
+            background: rgba(78, 205, 196, 0.2);
+            border-color: #4ecdc4;
+            transform: scale(1.05);
+        }
+        
+        .option-item.selected {
+            background: rgba(78, 205, 196, 0.3);
+            border-color: #4ecdc4;
         }
         
         .price-section {
@@ -142,6 +287,9 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
         }
         
         .price {
@@ -157,7 +305,7 @@
         
         .buy-button {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             border: none;
             border-radius: 12px;
@@ -168,11 +316,28 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .buy-button:hover::before {
+            left: 100%;
         }
         
         .buy-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
         }
         
         .exclusive-badge {
@@ -181,11 +346,40 @@
             right: 20px;
             background: linear-gradient(45deg, #ff6b6b, #ff8e53);
             color: white;
-            padding: 5px 12px;
+            padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #b8b8b8;
+            font-size: 1rem;
         }
         
         .footer {
@@ -205,16 +399,59 @@
             align-items: center;
             background: #5865f2;
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            margin: 10px;
         }
         
         .discord-link:hover {
             background: #4752c4;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(78, 205, 196, 0.8);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
         
         @media (max-width: 768px) {
@@ -229,6 +466,14 @@
             .container {
                 padding: 15px;
             }
+            
+            .gallery-main {
+                height: 300px;
+            }
+            
+            .option-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -242,6 +487,62 @@
             </div>
         </div>
         
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Active Players</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Server Uptime</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Custom Cars</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Properties Available</div>
+            </div>
+        </div>
+        
+        <!-- 1 of 1 Cars Section -->
+        <div class="cars-section">
+            <h2 class="section-title">🏎️ Exclusive 1 of 1 Cars</h2>
+            
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <div class="gallery-slide active" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 400%22><rect fill=%22%23ff6b6b%22 width=%22800%22 height=%22400%22/><rect fill=%22%23000%22 x=%22100%22 y=%22150%22 width=%22600%22 height=%22100%22 rx=%2250%22/><circle fill=%22%23333%22 cx=%22200%22 cy=%22300%22 r=%2240%22/><circle fill=%22%23333%22 cx=%22600%22 cy=%22300%22 r=%2240%22/><rect fill=%22%23fff%22 x=%22150%22 y=%22180%22 width=%22100%22 height=%2240%22 rx=%225%22/><text x=%22400%22 y=%22220%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2224%22 font-family=%22Arial%22>SUPERCAR</text></svg>');">
+                        <div class="slide-info">
+                            <div class="slide-title">Phantom Hypercar</div>
+                            <div class="slide-description">Ultra-rare hypercar with custom carbon fiber body and exclusive neon underglow system</div>
+                        </div>
+                    </div>
+                    <div class="gallery-slide" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 400%22><rect fill=%22%234ecdc4%22 width=%22800%22 height=%22400%22/><rect fill=%22%23000%22 x=%22120%22 y=%22160%22 width=%22560%22 height=%2280%22 rx=%2240%22/><circle fill=%22%23333%22 cx=%22220%22 cy=%22300%22 r=%2235%22/><circle fill=%22%23333%22 cx=%22580%22 cy=%22300%22 r=%2235%22/><rect fill=%22%23fff%22 x=%22170%22 y=%22185%22 width=%2280%22 height=%2230%22 rx=%225%22/><text x=%22400%22 y=%22210%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2220%22 font-family=%22Arial%22>LUXURY</text></svg>');">
+                        <div class="slide-info">
+                            <div class="slide-title">Diamond Edition Sedan</div>
+                            <div class="slide-description">Luxury sedan with diamond-studded interior and bulletproof glass modifications</div>
+                        </div>
+                    </div>
+                    <div class="gallery-slide" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 400%22><rect fill=%22%2345b7d1%22 width=%22800%22 height=%22400%22/><rect fill=%22%23000%22 x=%2280%22 y=%22140%22 width=%22640%22 height=%22120%22 rx=%2260%22/><circle fill=%22%23333%22 cx=%22180%22 cy=%22320%22 r=%2250%22/><circle fill=%22%23333%22 cx=%22620%22 cy=%22320%22 r=%2250%22/><rect fill=%22%23fff%22 x=%22130%22 y=%22170%22 width=%22120%22 height=%2250%22 rx=%225%22/><text x=%22400%22 y=%22200%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2228%22 font-family=%22Arial%22>DRIFT</text></svg>');">
+                        <div class="slide-info">
+                            <div class="slide-title">Apex Drift Machine</div>
+                            <div class="slide-description">Purpose-built drift car with custom suspension and exclusive livery design</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-prev" onclick="changeSlide(-1)">‹</button>
+                <button class="gallery-nav gallery-next" onclick="changeSlide(1)">›</button>
+            </div>
+            
+            <div class="gallery-dots">
+                <div class="gallery-dot active" onclick="currentSlide(1)"></div>
+                <div class="gallery-dot" onclick="currentSlide(2)"></div>
+                <div class="gallery-dot" onclick="currentSlide(3)"></div>
+            </div>
+        </div>
+        
         <div class="products-grid">
             <!-- 1 of 1 Cars -->
             <div class="product-card">
@@ -249,16 +550,30 @@
                 <div class="product-icon">🏎️</div>
                 <h3 class="product-title">1 of 1 Exclusive Cars</h3>
                 <p class="product-description">Own a completely unique vehicle that no one else on the server will have. These are custom, one-of-a-kind cars with exclusive modifications.</p>
-                <ul class="product-features">
-                    <li>Completely unique vehicle</li>
-                    <li>Custom modifications & livery</li>
-                    <li>Exclusive ownership rights</li>
-                    <li>Premium performance tuning</li>
-                    <li>Collector's status symbol</li>
-                </ul>
+                
+                <div class="product-options">
+                    <div class="option-category">
+                        <div class="option-title">Car Type</div>
+                        <div class="option-grid">
+                            <div class="option-item" onclick="selectOption(this, 'hypercar', 79.99)">Hypercar - $79.99</div>
+                            <div class="option-item" onclick="selectOption(this, 'luxury', 59.99)">Luxury - $59.99</div>
+                            <div class="option-item selected" onclick="selectOption(this, 'sports', 49.99)">Sports - $49.99</div>
+                            <div class="option-item" onclick="selectOption(this, 'drift', 54.99)">Drift - $54.99</div>
+                        </div>
+                    </div>
+                    <div class="option-category">
+                        <div class="option-title">Customization Level</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectCustomization(this, 0)">Standard</div>
+                            <div class="option-item" onclick="selectCustomization(this, 15)">Premium (+$15)</div>
+                            <div class="option-item" onclick="selectCustomization(this, 30)">Ultimate (+$30)</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="price-section">
-                    <div class="price">$49.99</div>
-                    <div class="price-note">Starting price</div>
+                    <div class="price" id="car-price">$49.99</div>
+                    <div class="price-note">One-time purchase</div>
                 </div>
                 <button class="buy-button" onclick="purchaseItem('1of1-cars')">Purchase Now</button>
             </div>
@@ -268,15 +583,31 @@
                 <div class="product-icon">🏢</div>
                 <h3 class="product-title">Business Properties</h3>
                 <p class="product-description">Establish your empire with premium business locations. Generate passive income and create your own roleplay opportunities.</p>
-                <ul class="product-features">
-                    <li>Prime business locations</li>
-                    <li>Passive income generation</li>
-                    <li>Customizable interiors</li>
-                    <li>Employee management system</li>
-                    <li>Business progression mechanics</li>
-                </ul>
+                
+                <div class="product-options">
+                    <div class="option-category">
+                        <div class="option-title">Property Type</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectProperty(this, 29.99)">Restaurant - $29.99</div>
+                            <div class="option-item" onclick="selectProperty(this, 39.99)">Nightclub - $39.99</div>
+                            <div class="option-item" onclick="selectProperty(this, 49.99)">Casino - $49.99</div>
+                            <div class="option-item" onclick="selectProperty(this, 34.99)">Gas Station - $34.99</div>
+                            <div class="option-item" onclick="selectProperty(this, 44.99)">Car Dealership - $44.99</div>
+                            <div class="option-item" onclick="selectProperty(this, 24.99)">Convenience Store - $24.99</div>
+                        </div>
+                    </div>
+                    <div class="option-category">
+                        <div class="option-title">Location Tier</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectLocation(this, 0)">Standard</div>
+                            <div class="option-item" onclick="selectLocation(this, 10)">Premium (+$10)</div>
+                            <div class="option-item" onclick="selectLocation(this, 20)">VIP (+$20)</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="price-section">
-                    <div class="price">$29.99</div>
+                    <div class="price" id="property-price">$29.99</div>
                     <div class="price-note">Per property</div>
                 </div>
                 <button class="buy-button" onclick="purchaseItem('business-property')">Purchase Now</button>
@@ -287,15 +618,38 @@
                 <div class="product-icon">🏰</div>
                 <h3 class="product-title">Gang Compounds</h3>
                 <p class="product-description">Secure your crew's territory with an exclusive gang compound. Perfect for organized crime roleplay and group activities.</p>
-                <ul class="product-features">
-                    <li>Fortified compound location</li>
-                    <li>Multiple rooms & facilities</li>
-                    <li>Secure storage systems</li>
-                    <li>Gang meeting spaces</li>
-                    <li>Territory control benefits</li>
-                </ul>
+                
+                <div class="product-options">
+                    <div class="option-category">
+                        <div class="option-title">Compound Size</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectCompound(this, 39.99)">Small - $39.99</div>
+                            <div class="option-item" onclick="selectCompound(this, 59.99)">Medium - $59.99</div>
+                            <div class="option-item" onclick="selectCompound(this, 79.99)">Large - $79.99</div>
+                            <div class="option-item" onclick="selectCompound(this, 99.99)">Fortress - $99.99</div>
+                        </div>
+                    </div>
+                    <div class="option-category">
+                        <div class="option-title">Security Level</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectSecurity(this, 0)">Basic</div>
+                            <div class="option-item" onclick="selectSecurity(this, 15)">Enhanced (+$15)</div>
+                            <div class="option-item" onclick="selectSecurity(this, 25)">Maximum (+$25)</div>
+                        </div>
+                    </div>
+                    <div class="option-category">
+                        <div class="option-title">Special Features</div>
+                        <div class="option-grid">
+                            <div class="option-item" onclick="toggleFeature(this, 10)">Helipad (+$10)</div>
+                            <div class="option-item" onclick="toggleFeature(this, 8)">Underground Garage (+$8)</div>
+                            <div class="option-item" onclick="toggleFeature(this, 12)">Meeting Room (+$12)</div>
+                            <div class="option-item" onclick="toggleFeature(this, 15)">Armory (+$15)</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="price-section">
-                    <div class="price">$39.99</div>
+                    <div class="price" id="compound-price">$39.99</div>
                     <div class="price-note">Per compound</div>
                 </div>
                 <button class="buy-button" onclick="purchaseItem('gang-compound')">Purchase Now</button>
@@ -304,18 +658,32 @@
             <!-- Supporter Role -->
             <div class="product-card">
                 <div class="product-icon">👑</div>
-                <h3 class="product-title">Supporter Role + Queue Priority</h3>
+                <h3 class="product-title">Supporter Packages</h3>
                 <p class="product-description">Show your support for Dark Horizon RP while enjoying exclusive perks and priority access to the server.</p>
-                <ul class="product-features">
-                    <li>Discord Supporter role & badge</li>
-                    <li>Queue priority access</li>
-                    <li>Exclusive Discord channels</li>
-                    <li>Early update notifications</li>
-                    <li>Community recognition</li>
-                    <li>Monthly supporter events</li>
-                </ul>
+                
+                <div class="product-options">
+                    <div class="option-category">
+                        <div class="option-title">Support Tier</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectSupporter(this, 9.99)">Bronze - $9.99/mo</div>
+                            <div class="option-item" onclick="selectSupporter(this, 19.99)">Silver - $19.99/mo</div>
+                            <div class="option-item" onclick="selectSupporter(this, 29.99)">Gold - $29.99/mo</div>
+                            <div class="option-item" onclick="selectSupporter(this, 49.99)">Platinum - $49.99/mo</div>
+                        </div>
+                    </div>
+                    <div class="option-category">
+                        <div class="option-title">Billing Period</div>
+                        <div class="option-grid">
+                            <div class="option-item selected" onclick="selectBilling(this, 1)">Monthly</div>
+                            <div class="option-item" onclick="selectBilling(this, 0.85)">3 Months (-15%)</div>
+                            <div class="option-item" onclick="selectBilling(this, 0.75)">6 Months (-25%)</div>
+                            <div class="option-item" onclick="selectBilling(this, 0.65)">12 Months (-35%)</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="price-section">
-                    <div class="price">$9.99</div>
+                    <div class="price" id="supporter-price">$9.99</div>
                     <div class="price-note">Monthly</div>
                 </div>
                 <button class="buy-button" onclick="purchaseItem('supporter-role')">Subscribe Now</button>
@@ -328,37 +696,222 @@
             <a href="#" class="discord-link" onclick="joinDiscord()">
                 💬 Join Our Discord Community
             </a>
+            <a href="#" class="discord-link" onclick="viewRules()">
+                📋 Server Rules & Guidelines
+            </a>
         </div>
     </div>
     
     <script>
+        // Gallery functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.gallery-dot');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+        
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            showSlide(currentSlideIndex);
+        }
+        
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+        
+        // Auto-advance gallery
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+        
+        // Car pricing system
+        let carBasePrice = 49.99;
+        let carCustomizationPrice = 0;
+        
+        function selectOption(element, type, price) {
+            // Remove selected from siblings
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            carBasePrice = price;
+            updateCarPrice();
+        }
+        
+        function selectCustomization(element, price) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            carCustomizationPrice = price;
+            updateCarPrice();
+        }
+        
+        function updateCarPrice() {
+            const totalPrice = carBasePrice + carCustomizationPrice;
+            document.getElementById('car-price').textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
+        // Property pricing system
+        let propertyBasePrice = 29.99;
+        let propertyLocationPrice = 0;
+        
+        function selectProperty(element, price) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            propertyBasePrice = price;
+            updatePropertyPrice();
+        }
+        
+        function selectLocation(element, price) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            propertyLocationPrice = price;
+            updatePropertyPrice();
+        }
+        
+        function updatePropertyPrice() {
+            const totalPrice = propertyBasePrice + propertyLocationPrice;
+            document.getElementById('property-price').textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
+        // Compound pricing system
+        let compoundBasePrice = 39.99;
+        let compoundSecurityPrice = 0;
+        let compoundFeaturesPrices = [];
+        
+        function selectCompound(element, price) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            compoundBasePrice = price;
+            updateCompoundPrice();
+        }
+        
+        function selectSecurity(element, price) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            compoundSecurityPrice = price;
+            updateCompoundPrice();
+        }
+        
+        function toggleFeature(element, price) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                const index = compoundFeaturesPrices.indexOf(price);
+                if (index > -1) compoundFeaturesPrices.splice(index, 1);
+            } else {
+                element.classList.add('selected');
+                compoundFeaturesPrices.push(price);
+            }
+            updateCompoundPrice();
+        }
+        
+        function updateCompoundPrice() {
+            const featuresTotal = compoundFeaturesPrices.reduce((sum, price) => sum + price, 0);
+            const totalPrice = compoundBasePrice + compoundSecurityPrice + featuresTotal;
+            document.getElementById('compound-price').textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
+        // Supporter pricing system
+        let supporterBasePrice = 9.99;
+        let supporterBillingMultiplier = 1;
+        
+        function selectSupporter(element, price) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            supporterBasePrice = price;
+            updateSupporterPrice();
+        }
+        
+        function selectBilling(element, multiplier) {
+            element.parentNode.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            supporterBillingMultiplier = multiplier;
+            updateSupporterPrice();
+        }
+        
+        function updateSupporterPrice() {
+            const totalPrice = supporterBasePrice * supporterBillingMultiplier;
+            document.getElementById('supporter-price').textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        
         function purchaseItem(itemType) {
-            // This would integrate with Tebex API in a real implementation
             const items = {
                 '1of1-cars': 'Exclusive 1 of 1 Vehicle',
                 'business-property': 'Business Property',
                 'gang-compound': 'Gang Compound',
-                'supporter-role': 'Supporter Role + Queue Priority'
+                'supporter-role': 'Supporter Package'
             };
             
-            alert(`Redirecting to Tebex checkout for: ${items[itemType]}\n\nIn a real implementation, this would redirect to your Tebex store checkout page.`);
+            let price = '';
+            switch(itemType) {
+                case '1of1-cars':
+                    price = document.getElementById('car-price').textContent;
+                    break;
+                case 'business-property':
+                    price = document.getElementById('property-price').textContent;
+                    break;
+                case 'gang-compound':
+                    price = document.getElementById('compound-price').textContent;
+                    break;
+                case 'supporter-role':
+                    price = document.getElementById('supporter-price').textContent;
+                    break;
+            }
+            
+            alert(`🛒 Redirecting to Tebex checkout for: ${items[itemType]}\n💰 Total: ${price}\n\n✅ In a real implementation, this would redirect to your Tebex store checkout page with the selected options.`);
             
             // In real implementation, this would be:
-            // window.location.href = `https://your-tebex-store.tebex.io/checkout/package/${itemType}`;
+            // window.location.href = `https://your-tebex-store.tebex.io/checkout/package/${itemType}?price=${price}`;
         }
         
         function joinDiscord() {
-            alert('This would redirect to your Discord server invite link.\n\nReplace with your actual Discord invite URL.');
-            
-            // In real implementation:
+            alert('🎮 Joining Dark Horizon RP Discord!\n\n📋 Replace with your actual Discord invite URL.');
             // window.open('https://discord.gg/your-invite-code', '_blank');
         }
         
-        // Add some interactive effects
+        function viewRules() {
+            alert('📋 Opening Server Rules & Guidelines\n\n🔗 Replace with your server rules page URL.');
+            // window.open('https://your-server-rules-url.com', '_blank');
+        }
+        
+        // Enhanced interactive effects
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.product-card');
             
-            cards.forEach(card => {
+            cards.forEach((card, index) => {
+                // Staggered animation on load
+                card.style.animationDelay = `${index * 0.1}s`;
+                
                 card.addEventListener('mouseenter', function() {
                     this.style.background = 'rgba(255, 255, 255, 0.12)';
                 });
@@ -367,7 +920,55 @@
                     this.style.background = 'rgba(255, 255, 255, 0.08)';
                 });
             });
+            
+            // Animate stats on scroll
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumbers = entry.target.querySelectorAll('.stat-number');
+                        statNumbers.forEach(stat => {
+                            const finalValue = stat.textContent;
+                            const isNumber = !isNaN(parseInt(finalValue));
+                            
+                            if (isNumber) {
+                                const target = parseInt(finalValue);
+                                let current = 0;
+                                const increment = target / 50;
+                                const timer = setInterval(() => {
+                                    current += increment;
+                                    if (current >= target) {
+                                        stat.textContent = finalValue;
+                                        clearInterval(timer);
+                                    } else {
+                                        stat.textContent = Math.floor(current) + '+';
+                                    }
+                                }, 30);
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) observer.observe(statsSection);
+            
+            // Add particle effect on button hover
+            const buttons = document.querySelectorAll('.buy-button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ea23f6f69b0abb',t:'MTc1NTEwODMyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ea2c08c2840abb',t:'MTc1NTEwODY1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
