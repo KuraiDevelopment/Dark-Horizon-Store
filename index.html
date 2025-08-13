@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Horizon Roleplay - Premium Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #b8b8b8;
+            margin-bottom: 20px;
+        }
+        
+        .server-info {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(69, 183, 209, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid #45b7d1;
+        }
+        
+        .server-info span {
+            color: #45b7d1;
+            font-weight: 600;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .product-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .product-description {
+            color: #b8b8b8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            color: #d4d4d4;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4ecdc4;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .buy-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        .exclusive-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+        }
+        
+        .footer p {
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .discord-link {
+            display: inline-flex;
+            align-items: center;
+            background: #5865f2;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .discord-link:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dark Horizon Roleplay</h1>
+            <p>Premium FiveM Roleplay Experience</p>
+            <div class="server-info">
+                <span>🌟 Premium Store - Enhance Your RP Experience</span>
+            </div>
+        </div>
+        
+        <div class="products-grid">
+            <!-- 1 of 1 Cars -->
+            <div class="product-card">
+                <div class="exclusive-badge">Limited</div>
+                <div class="product-icon">🏎️</div>
+                <h3 class="product-title">1 of 1 Exclusive Cars</h3>
+                <p class="product-description">Own a completely unique vehicle that no one else on the server will have. These are custom, one-of-a-kind cars with exclusive modifications.</p>
+                <ul class="product-features">
+                    <li>Completely unique vehicle</li>
+                    <li>Custom modifications & livery</li>
+                    <li>Exclusive ownership rights</li>
+                    <li>Premium performance tuning</li>
+                    <li>Collector's status symbol</li>
+                </ul>
+                <div class="price-section">
+                    <div class="price">$49.99</div>
+                    <div class="price-note">Starting price</div>
+                </div>
+                <button class="buy-button" onclick="purchaseItem('1of1-cars')">Purchase Now</button>
+            </div>
+            
+            <!-- Business Properties -->
+            <div class="product-card">
+                <div class="product-icon">🏢</div>
+                <h3 class="product-title">Business Properties</h3>
+                <p class="product-description">Establish your empire with premium business locations. Generate passive income and create your own roleplay opportunities.</p>
+                <ul class="product-features">
+                    <li>Prime business locations</li>
+                    <li>Passive income generation</li>
+                    <li>Customizable interiors</li>
+                    <li>Employee management system</li>
+                    <li>Business progression mechanics</li>
+                </ul>
+                <div class="price-section">
+                    <div class="price">$29.99</div>
+                    <div class="price-note">Per property</div>
+                </div>
+                <button class="buy-button" onclick="purchaseItem('business-property')">Purchase Now</button>
+            </div>
+            
+            <!-- Gang Compounds -->
+            <div class="product-card">
+                <div class="product-icon">🏰</div>
+                <h3 class="product-title">Gang Compounds</h3>
+                <p class="product-description">Secure your crew's territory with an exclusive gang compound. Perfect for organized crime roleplay and group activities.</p>
+                <ul class="product-features">
+                    <li>Fortified compound location</li>
+                    <li>Multiple rooms & facilities</li>
+                    <li>Secure storage systems</li>
+                    <li>Gang meeting spaces</li>
+                    <li>Territory control benefits</li>
+                </ul>
+                <div class="price-section">
+                    <div class="price">$39.99</div>
+                    <div class="price-note">Per compound</div>
+                </div>
+                <button class="buy-button" onclick="purchaseItem('gang-compound')">Purchase Now</button>
+            </div>
+            
+            <!-- Supporter Role -->
+            <div class="product-card">
+                <div class="product-icon">👑</div>
+                <h3 class="product-title">Supporter Role + Queue Priority</h3>
+                <p class="product-description">Show your support for Dark Horizon RP while enjoying exclusive perks and priority access to the server.</p>
+                <ul class="product-features">
+                    <li>Discord Supporter role & badge</li>
+                    <li>Queue priority access</li>
+                    <li>Exclusive Discord channels</li>
+                    <li>Early update notifications</li>
+                    <li>Community recognition</li>
+                    <li>Monthly supporter events</li>
+                </ul>
+                <div class="price-section">
+                    <div class="price">$9.99</div>
+                    <div class="price-note">Monthly</div>
+                </div>
+                <button class="buy-button" onclick="purchaseItem('supporter-role')">Subscribe Now</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>All purchases are processed securely through Tebex</p>
+            <p>Items are delivered automatically upon successful payment</p>
+            <a href="#" class="discord-link" onclick="joinDiscord()">
+                💬 Join Our Discord Community
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        function purchaseItem(itemType) {
+            // This would integrate with Tebex API in a real implementation
+            const items = {
+                '1of1-cars': 'Exclusive 1 of 1 Vehicle',
+                'business-property': 'Business Property',
+                'gang-compound': 'Gang Compound',
+                'supporter-role': 'Supporter Role + Queue Priority'
+            };
+            
+            alert(`Redirecting to Tebex checkout for: ${items[itemType]}\n\nIn a real implementation, this would redirect to your Tebex store checkout page.`);
+            
+            // In real implementation, this would be:
+            // window.location.href = `https://your-tebex-store.tebex.io/checkout/package/${itemType}`;
+        }
+        
+        function joinDiscord() {
+            alert('This would redirect to your Discord server invite link.\n\nReplace with your actual Discord invite URL.');
+            
+            // In real implementation:
+            // window.open('https://discord.gg/your-invite-code', '_blank');
+        }
+        
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.12)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.08)';
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ea23f6f69b0abb',t:'MTc1NTEwODMyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
